@@ -10,3 +10,6 @@ D:\老化台\management\Management\Management\obj\Debug\Management.pdb
 D:\老化台\management\Management\Management\obj\Debug\Management.frmMain.resources
 D:\老化台\management\Management\Management\obj\Debug\Management.frm操作员.resources
 D:\老化台\management\Management\Management\obj\Debug\Management.frmLogin.resources
+D:\老化台\management\Management\Management\obj\Debug\Management.frm数据检索.resources
+D:\老化台\management\Management\Management\bin\Debug\老化台.accdb
+D:\老化台\management\Management\Management\bin\Debug\Management.exe.config

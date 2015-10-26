@@ -2,7 +2,7 @@
     Dim isOpen As Boolean
     Private Sub btnOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOk.Click
 
-        If _str管理员密码 = txtPsw.Text Then
+        If _管理员密码 = txtPsw.Text Then
             isOpen = True
             Me.Dispose()
         Else

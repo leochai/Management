@@ -48,4 +48,13 @@ Public Class frmMain
     End Sub
 
     
+    Private Sub 设置ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 设置ToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub 试验数据检索ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 试验数据检索ToolStripMenuItem.Click
+        frm数据检索.ShowDialog()
+
+    End Sub
+
 End Class

@@ -211,7 +211,7 @@ Public Class frm操作员
         DBcmd.CommandText = "select 密码 from 操作员 where 姓名='" & txt删除姓名.Text & "'"
         DBreader = DBcmd.ExecuteReader
         DBreader.Read()
-        If txt删除密码.Text = _str管理员密码 Or txt删除密码.Text = DBreader("密码") Then
+        If txt删除密码.Text = _管理员密码 Or txt删除密码.Text = DBreader("密码") Then
             DBreader.Close()
             DBcmd.CommandText = "delete from 操作员 where 姓名='" & txt删除姓名.Text & "'"
             DBcmd.ExecuteNonQuery()
