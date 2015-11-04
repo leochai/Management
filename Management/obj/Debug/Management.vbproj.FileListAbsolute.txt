@@ -13,3 +13,6 @@ D:\老化台\management\Management\Management\obj\Debug\Management.frmLogin.reso
 D:\老化台\management\Management\Management\obj\Debug\Management.frm数据检索.resources
 D:\老化台\management\Management\Management\bin\Debug\老化台.accdb
 D:\老化台\management\Management\Management\bin\Debug\Management.exe.config
+D:\老化台\management\Management\Management\bin\Debug\LeoControls.dll
+D:\老化台\management\Management\Management\bin\Debug\LeoControls.pdb
+D:\老化台\management\Management\Management\bin\Debug\LeoControls.xml

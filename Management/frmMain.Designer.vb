@@ -22,9 +22,9 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.cbo单元号 = New System.Windows.Forms.ComboBox
         Me.dgv编号 = New System.Windows.Forms.DataGridView
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
@@ -134,12 +134,13 @@ Partial Class frmMain
         Me.Label96 = New System.Windows.Forms.Label
         Me.Label97 = New System.Windows.Forms.Label
         Me.Label98 = New System.Windows.Forms.Label
+        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.SwitchLight = New LeoControls.SwitchLight
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.操作员管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.开始试验设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.试验数据检索ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.设置ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         CType(Me.dgv编号, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -165,31 +166,31 @@ Partial Class frmMain
         '
         Me.dgv编号.AllowUserToAddRows = False
         Me.dgv编号.AllowUserToDeleteRows = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv编号.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv编号.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgv编号.ColumnHeadersHeight = 30
         Me.dgv编号.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
         Me.dgv编号.Location = New System.Drawing.Point(42, 71)
         Me.dgv编号.Name = "dgv编号"
         Me.dgv编号.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv编号.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgv编号.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgv编号.RowHeadersVisible = False
         Me.dgv编号.RowHeadersWidth = 20
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.dgv编号.RowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.dgv编号.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.dgv编号.RowTemplate.Height = 23
         Me.dgv编号.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.dgv编号.Size = New System.Drawing.Size(161, 232)
@@ -1267,18 +1268,32 @@ Partial Class frmMain
         Me.Label98.TabIndex = 11
         Me.Label98.Text = "老化-1"
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(64, 458)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(188, 21)
+        Me.TextBox1.TabIndex = 10
+        '
+        'SwitchLight
+        '
+        Me.SwitchLight.Location = New System.Drawing.Point(369, 72)
+        Me.SwitchLight.Name = "SwitchLight"
+        Me.SwitchLight.Size = New System.Drawing.Size(40, 40)
+        Me.SwitchLight.TabIndex = 11
+        '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.设置ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1008, 25)
-        Me.MenuStrip1.TabIndex = 9
+        Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         '设置ToolStripMenuItem
         '
-        Me.设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.操作员管理ToolStripMenuItem, Me.开始试验设置ToolStripMenuItem, Me.试验数据检索ToolStripMenuItem})
+        Me.设置ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.操作员管理ToolStripMenuItem, Me.试验数据检索ToolStripMenuItem, Me.设置ToolStripMenuItem1})
         Me.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem"
         Me.设置ToolStripMenuItem.Size = New System.Drawing.Size(44, 21)
         Me.设置ToolStripMenuItem.Text = "设置"
@@ -1289,36 +1304,29 @@ Partial Class frmMain
         Me.操作员管理ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.操作员管理ToolStripMenuItem.Text = "操作员管理"
         '
-        '开始试验设置ToolStripMenuItem
-        '
-        Me.开始试验设置ToolStripMenuItem.Name = "开始试验设置ToolStripMenuItem"
-        Me.开始试验设置ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.开始试验设置ToolStripMenuItem.Text = "开始试验设置"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(64, 458)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(188, 21)
-        Me.TextBox1.TabIndex = 10
-        '
         '试验数据检索ToolStripMenuItem
         '
         Me.试验数据检索ToolStripMenuItem.Name = "试验数据检索ToolStripMenuItem"
         Me.试验数据检索ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.试验数据检索ToolStripMenuItem.Text = "试验数据检索"
         '
+        '设置ToolStripMenuItem1
+        '
+        Me.设置ToolStripMenuItem1.Name = "设置ToolStripMenuItem1"
+        Me.设置ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.设置ToolStripMenuItem1.Text = "设置"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1008, 702)
+        Me.Controls.Add(Me.SwitchLight)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1448,11 +1456,12 @@ Partial Class frmMain
     Friend WithEvents Label96 As System.Windows.Forms.Label
     Friend WithEvents Label97 As System.Windows.Forms.Label
     Friend WithEvents Label98 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents SwitchLight As LeoControls.SwitchLight
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents 设置ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents 操作员管理ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents 开始试验设置ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents 试验数据检索ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents 设置ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

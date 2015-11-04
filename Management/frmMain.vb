@@ -4,14 +4,16 @@ Imports System.Data.OleDb
 Imports System.Threading
 
 Public Class frmMain
-
-    Private Sub frmMain_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
-        
+    Dim flag As Boolean
+    Private Sub frmMain_mousedown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.MouseDown
+        flag = Not flag
+        SwitchLight.TurnOnOff(flag)
 
     End Sub
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        
+    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        flag = False
+
         For i = 1 To 48
             dgv编号.Rows.Add(1)
             dgv编号(0, i - 1).Value = i '先列后行
@@ -19,7 +21,7 @@ Public Class frmMain
         cbo单元号.SelectedIndex = 0
         cbo型号.SelectedIndex = 0
 
-     
+
         '数据库操作
 
         _DBconn.Open()
@@ -47,14 +49,7 @@ Public Class frmMain
         frmLogin.ShowDialog()
     End Sub
 
-    
-    Private Sub 设置ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 设置ToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub 试验数据检索ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 试验数据检索ToolStripMenuItem.Click
         frm数据检索.ShowDialog()
-
     End Sub
-
 End Class
