@@ -60,6 +60,20 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property 一位器件() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("一位器件", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property 器件() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("器件", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property 红灯() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("红灯", resourceCulture)

@@ -87,14 +87,13 @@ Public Class LHSerialPort
     '发送整点数据请求帧
     Public Sub WriteIntegral(ByVal address As Byte, ByVal part As Byte, ByVal time As Byte)
         Dim wbuffer(7) As Byte
-        part <<= 6
 
         wbuffer(0) = beginning
         wbuffer(1) = 3
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdIntegral
-        wbuffer(5) = part + time
+        wbuffer(5) = (part << 6) + time
         wbuffer(6) = CS(wbuffer)
         wbuffer(7) = terminal
 
