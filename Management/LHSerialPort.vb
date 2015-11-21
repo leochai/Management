@@ -19,21 +19,14 @@ Public Class LHSerialPort
             input2(i) = input(i)
         Next
 
-
-        Dim n As Byte = 0
+        Dim num As Byte = 0
         For i = 0 To input2.Length - 1 - 2
             While (input2(i))
-                If (input2(i) And &H1) Then
-                    If n = 255 Then
-                        n = 0
-                    Else
-                        n += 1
-                    End If
-                End If
-                input2(i) >>= 1
+                input2(i) = input2(i) And (input2(i) - 1)
+                num += 1
             End While
         Next
-        Return n
+        Return num
     End Function
 
     '发送一般请求帧

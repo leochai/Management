@@ -22,18 +22,6 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.cbo单元号 = New System.Windows.Forms.ComboBox
-        Me.dgv编号 = New System.Windows.Forms.DataGridView
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.cbo型号 = New System.Windows.Forms.ComboBox
-        Me.btn自动编号 = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
         Me.Label34 = New System.Windows.Forms.Label
@@ -134,7 +122,6 @@ Partial Class frmMain
         Me.Label96 = New System.Windows.Forms.Label
         Me.Label97 = New System.Windows.Forms.Label
         Me.Label98 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.SwitchLight = New LeoControls.SwitchLight
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -143,8 +130,6 @@ Partial Class frmMain
         Me.设置ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.TextBox2 = New System.Windows.Forms.TextBox
-        CType(Me.dgv编号, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -152,122 +137,6 @@ Partial Class frmMain
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'cbo单元号
-        '
-        Me.cbo单元号.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbo单元号.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.cbo单元号.FormattingEnabled = True
-        Me.cbo单元号.Items.AddRange(New Object() {"#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8"})
-        Me.cbo单元号.Location = New System.Drawing.Point(129, 19)
-        Me.cbo单元号.Name = "cbo单元号"
-        Me.cbo单元号.Size = New System.Drawing.Size(74, 20)
-        Me.cbo单元号.TabIndex = 0
-        Me.cbo单元号.Tag = ""
-        '
-        'dgv编号
-        '
-        Me.dgv编号.AllowUserToAddRows = False
-        Me.dgv编号.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv编号.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgv编号.ColumnHeadersHeight = 30
-        Me.dgv编号.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
-        Me.dgv编号.Location = New System.Drawing.Point(42, 71)
-        Me.dgv编号.Name = "dgv编号"
-        Me.dgv编号.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgv编号.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgv编号.RowHeadersVisible = False
-        Me.dgv编号.RowHeadersWidth = 20
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.dgv编号.RowsDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgv编号.RowTemplate.Height = 23
-        Me.dgv编号.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dgv编号.Size = New System.Drawing.Size(161, 232)
-        Me.dgv编号.TabIndex = 2
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "老化位"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Column1.Width = 60
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "器件编号"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Column2.Width = 80
-        '
-        'cbo型号
-        '
-        Me.cbo型号.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbo型号.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.cbo型号.FormattingEnabled = True
-        Me.cbo型号.Items.AddRange(New Object() {"GH302", "4GH302", "GHB302", "GO11", "GH137"})
-        Me.cbo型号.Location = New System.Drawing.Point(129, 44)
-        Me.cbo型号.Name = "cbo型号"
-        Me.cbo型号.Size = New System.Drawing.Size(74, 20)
-        Me.cbo型号.TabIndex = 3
-        Me.cbo型号.Tag = "1"
-        '
-        'btn自动编号
-        '
-        Me.btn自动编号.Location = New System.Drawing.Point(209, 71)
-        Me.btn自动编号.Name = "btn自动编号"
-        Me.btn自动编号.Size = New System.Drawing.Size(68, 28)
-        Me.btn自动编号.TabIndex = 4
-        Me.btn自动编号.Text = "自动编号"
-        Me.btn自动编号.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(41, 22)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 12)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "老化单位序号"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(41, 48)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(77, 12)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "试验器件型号"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.dgv编号)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.cbo单元号)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.cbo型号)
-        Me.GroupBox1.Controls.Add(Me.btn自动编号)
-        Me.GroupBox1.Location = New System.Drawing.Point(32, 28)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(283, 315)
-        Me.GroupBox1.TabIndex = 7
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "试验参数设置"
         '
         'TabControl1
         '
@@ -1271,18 +1140,11 @@ Partial Class frmMain
         Me.Label98.TabIndex = 11
         Me.Label98.Text = "老化-1"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(64, 458)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(188, 21)
-        Me.TextBox1.TabIndex = 10
-        '
         'SwitchLight
         '
         Me.SwitchLight.Location = New System.Drawing.Point(369, 72)
         Me.SwitchLight.Name = "SwitchLight"
-        Me.SwitchLight.Size = New System.Drawing.Size(40, 40)
+        Me.SwitchLight.Size = New System.Drawing.Size(20, 20)
         Me.SwitchLight.TabIndex = 11
         '
         'MenuStrip1
@@ -1290,7 +1152,7 @@ Partial Class frmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.设置ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1008, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1274, 25)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -1341,21 +1203,16 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 702)
+        Me.ClientSize = New System.Drawing.Size(1274, 692)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.SwitchLight)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "光电耦合器稳态工作寿命台管理软件"
-        CType(Me.dgv编号, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1371,15 +1228,6 @@ Partial Class frmMain
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cbo单元号 As System.Windows.Forms.ComboBox
-    Friend WithEvents dgv编号 As System.Windows.Forms.DataGridView
-    Friend WithEvents cbo型号 As System.Windows.Forms.ComboBox
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btn自动编号 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
@@ -1480,7 +1328,6 @@ Partial Class frmMain
     Friend WithEvents Label96 As System.Windows.Forms.Label
     Friend WithEvents Label97 As System.Windows.Forms.Label
     Friend WithEvents Label98 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents SwitchLight As LeoControls.SwitchLight
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents 设置ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

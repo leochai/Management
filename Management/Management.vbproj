@@ -91,6 +91,12 @@
     <Compile Include="frmPosChart1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmPosChart2.Designer.vb">
+      <DependentUpon>frmPosChart2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPosChart2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPosChart4.Designer.vb">
       <DependentUpon>frmPosChart4.vb</DependentUpon>
     </Compile>
@@ -112,7 +118,7 @@
     <Compile Include="LHSerialPort.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LHUnits.vb" />
+    <Compile Include="LHUnit.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -146,6 +152,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPosChart1.resx">
       <DependentUpon>frmPosChart1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPosChart2.resx">
+      <DependentUpon>frmPosChart2.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPosChart4.resx">

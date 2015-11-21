@@ -27,7 +27,11 @@ Public Class frmPosChart4
 
         For i = 0 To 23
             If cell(i).isUsed Then
-                a = cell(i).CellNum
+                If cell(i).CellNum = "" Then
+                    a = 1
+                Else
+                    a = cell(i).CellNum
+                End If
                 Exit For
             End If
         Next

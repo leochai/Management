@@ -18,3 +18,4 @@ D:\老化台\management\Management\Management\bin\Debug\LeoControls.pdb
 D:\老化台\management\Management\Management\bin\Debug\LeoControls.xml
 D:\老化台\management\Management\Management\obj\Debug\Management.frmPosChart1.resources
 D:\老化台\management\Management\Management\obj\Debug\Management.frmPosChart4.resources
+D:\老化台\management\Management\Management\obj\Debug\Management.frmPosChart2.resources
