@@ -12,16 +12,10 @@
     Public 操作员 As String
     Public 对位表(47) As Short
 
-
     Public Sub startTest()      '开始试验
 
     End Sub
-    Public Sub resumeTest()     '继续试验
-
-    End Sub
-    Public Sub endTest()        '结束试验
-
-    End Sub
+    
     Public Sub getOperatorName() '获取操作员姓名
 
     End Sub
