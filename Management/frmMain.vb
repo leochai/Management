@@ -4,7 +4,7 @@ Imports System.Threading
 Imports LeoControls
 
 Public Class frmMain
-   
+    Dim ShowList(23) As ArrayList
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '数据库操作
         _DBconn.Open()
@@ -21,16 +21,19 @@ Public Class frmMain
         End While
 
         For k = 0 To 23
-
+            ShowList(k) = New ArrayList
             If mytype(k) = 1 Then
                 Dim sshow(47) As OneShow
                 For j = 0 To 3
                     For i = 0 To 11
                         sshow(j * 6 + i) = New OneShow
-                        sshow(j * 6 + i).Left = 69 * i + 8
-                        sshow(j * 6 + i).Top = 118 * j + 50
-                        sshow(j * 6 + i).Parent = TabControl1.TabPages(k)
-                        sshow(j * 6 + i).ShowNum = j * 6 + i + 1
+                        With sshow(j * 6 + i)
+                            .Left = 69 * i + 8
+                            .Top = 118 * j + 50
+                            .Parent = TabControl1.TabPages(k)
+                            .ShowNum = j * 6 + i + 1
+                        End With
+                        ShowList(k).Add(sshow(j * 6 + i))
                     Next
                 Next
             Else
@@ -38,10 +41,13 @@ Public Class frmMain
                 For j = 0 To 3
                     For i = 0 To 5
                         sshow(j * 6 + i) = New FourShow
-                        sshow(j * 6 + i).Left = 138 * i + 8
-                        sshow(j * 6 + i).Top = 118 * j + 50
-                        sshow(j * 6 + i).Parent = TabControl1.TabPages(k)
-                        sshow(j * 6 + i).ShowNum = j * 6 + i + 1
+                        With sshow(j * 6 + i)
+                            .Left = 138 * i + 8
+                            .Top = 118 * j + 50
+                            .Parent = TabControl1.TabPages(k)
+                            .ShowNum = j * 6 + i + 1
+                        End With
+                        ShowList(k).Add(sshow(j * 6 + i))
                     Next
                 Next
             End If
@@ -59,6 +65,6 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
-
+        ShowList(12).Item(10).setResult(5.5, 6.6, 2)
     End Sub
 End Class
