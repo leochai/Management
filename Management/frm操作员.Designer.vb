@@ -62,6 +62,7 @@ Partial Class frm操作员
         '
         'lst操作员
         '
+        
         Me.lst操作员.Font = New System.Drawing.Font("SimSun", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.lst操作员.FormattingEnabled = True
         Me.lst操作员.ItemHeight = 16

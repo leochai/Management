@@ -103,6 +103,12 @@
     <Compile Include="frmPosChart4.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRoot.Designer.vb">
+      <DependentUpon>frmRoot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRoot.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm操作员.Designer.vb">
       <DependentUpon>frm操作员.vb</DependentUpon>
     </Compile>
@@ -160,6 +166,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPosChart4.resx">
       <DependentUpon>frmPosChart4.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRoot.resx">
+      <DependentUpon>frmRoot.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frm操作员.resx">
