@@ -53,10 +53,12 @@ Partial Class frmMain
         Me.操作员管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.试验数据检索ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.设置ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.btnMin = New System.Windows.Forms.Button
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.btnMax = New System.Windows.Forms.Button
+        Me.OneSec = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -354,15 +356,15 @@ Partial Class frmMain
         Me.设置ToolStripMenuItem1.Size = New System.Drawing.Size(148, 22)
         Me.设置ToolStripMenuItem1.Text = "设置"
         '
-        'Button1
+        'btnMin
         '
-        Me.Button1.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(244, 324)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(20, 70)
-        Me.Button1.TabIndex = 13
-        Me.Button1.Text = ">>>"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnMin.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnMin.Location = New System.Drawing.Point(244, 324)
+        Me.btnMin.Name = "btnMin"
+        Me.btnMin.Size = New System.Drawing.Size(20, 70)
+        Me.btnMin.TabIndex = 13
+        Me.btnMin.Text = ">>>"
+        Me.btnMin.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -390,21 +392,37 @@ Partial Class frmMain
         Me.TextBox1.Size = New System.Drawing.Size(329, 21)
         Me.TextBox1.TabIndex = 16
         '
+        'btnMax
+        '
+        Me.btnMax.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnMax.Location = New System.Drawing.Point(246, 421)
+        Me.btnMax.Name = "btnMax"
+        Me.btnMax.Size = New System.Drawing.Size(20, 70)
+        Me.btnMax.TabIndex = 17
+        Me.btnMax.Text = "<<<"
+        Me.btnMax.UseVisualStyleBackColor = True
+        Me.btnMax.Visible = False
+        '
+        'OneSec
+        '
+        Me.OneSec.Interval = 1000
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 692)
+        Me.Controls.Add(Me.btnMax)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnMin)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "frmMain"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "光电耦合器稳态工作寿命台管理软件"
         Me.TabControl1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
@@ -444,10 +462,12 @@ Partial Class frmMain
     Friend WithEvents TabPage22 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage23 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage24 As System.Windows.Forms.TabPage
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnMin As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents btnMax As System.Windows.Forms.Button
+    Friend WithEvents OneSec As System.Windows.Forms.Timer
     Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
 
 End Class

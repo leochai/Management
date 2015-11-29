@@ -1,4 +1,5 @@
 ﻿Imports System.Data.OleDb
+Imports System.IO.Ports
 
 Public Structure prmDistribute
     Dim second As Byte
@@ -13,5 +14,7 @@ End Structure
 Module pubdeclare
     Public _DBconn As New OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0;Data Source=D:/老化台.accdb")
     Public _管理员密码 As String = "65108280"
-
+    Public WithEvents _COM As New LHSerialPort("COM3", 1200, Parity.Odd, 8, 1)
+    Public _unit(23) As LHUnit
+    Public _readBuffer(29) As Byte
 End Module

@@ -11,19 +11,26 @@ Public Class LHSerialPort
     Public Shared cmdIntegral As Byte = &HC '整点数据请求
     Public Shared cmdDistribute As Byte = &HF   '参数下发
     Public Shared cmdStartup As Byte = &H30 '启动
-
-    Private Function CS(ByVal input() As Byte) As Byte
+    Public Sub New(ByVal portName As String, ByVal baudRate As Integer, _
+                   ByVal parity As Parity, ByVal dataBits As Integer, ByVal stopBits As StopBits)
+        MyBase.new(portName, baudRate, parity, dataBits, stopBits)
+    End Sub
+    Private Function CS(ByVal input() As Byte, ByVal len As Integer) As Byte
         '计算校验码
-        Dim input2(input.Length - 1) As Byte
-        For i = 0 To input.Length - 1
+        Dim input2(len - 1) As Byte
+        For i = 0 To len - 1
             input2(i) = input(i)
         Next
 
         Dim num As Byte = 0
-        For i = 0 To input2.Length - 1 - 2
+        For i = 0 To input2.Length - 1
             While (input2(i))
                 input2(i) = input2(i) And (input2(i) - 1)
-                num += 1
+                If num = 255 Then
+                    num = 0
+                Else
+                    num += 1
+                End If
             End While
         Next
         Return num
@@ -37,7 +44,7 @@ Public Class LHSerialPort
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdOrdinary
-        wbuffer(5) = CS(wbuffer)
+        wbuffer(5) = CS(wbuffer, wbuffer.Length)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
     End Sub
@@ -50,7 +57,7 @@ Public Class LHSerialPort
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdStartup
-        wbuffer(5) = CS(wbuffer)
+        wbuffer(5) = CS(wbuffer, wbuffer.Length)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
     End Sub
@@ -72,7 +79,7 @@ Public Class LHSerialPort
         wbuffer(14) = prm.type
         wbuffer(15) = prm.max
         wbuffer(16) = prm.mini
-        wbuffer(17) = CS(wbuffer)
+        wbuffer(17) = CS(wbuffer, wbuffer.Length)
         wbuffer(18) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
     End Sub
@@ -87,9 +94,28 @@ Public Class LHSerialPort
         wbuffer(3) = address
         wbuffer(4) = cmdIntegral
         wbuffer(5) = (part << 6) + time
-        wbuffer(6) = CS(wbuffer)
+        wbuffer(6) = CS(wbuffer, wbuffer.Length)
         wbuffer(7) = terminal
 
         MyBase.Write(wbuffer, 0, wbuffer.Length)
     End Sub
+
+    Public Function ReadUp(ByRef buffer() As Byte) As Boolean
+        Dim len As Byte
+
+        While Not MyBase.ReadByte() = &H63  '查找起始字符
+        End While
+
+        len = MyBase.ReadByte()             '地址域+命令域+数据域，比帧长度小5字节
+        buffer(0) = &H63
+        buffer(1) = len
+        MyBase.Read(buffer, 2, len + 3)
+
+        If buffer(len + 4) <> &H16 Then Return False '不是以结束符结尾
+        If CS(buffer, len + 3) <> buffer(len + 3) Then Return False '校验错误
+
+        Return True
+    End Function
+
+
 End Class
