@@ -102,19 +102,22 @@ Public Class LHSerialPort
 
     Public Function ReadUp(ByRef buffer() As Byte) As Boolean
         Dim len As Byte
+        If BytesToRead > 0 Then
+            While Not MyBase.ReadByte() = &H63  '查找起始字符
+                If BytesToRead = 0 Then Return False
+            End While
 
-        While Not MyBase.ReadByte() = &H63  '查找起始字符
-        End While
+            len = MyBase.ReadByte()             '地址域+命令域+数据域，比帧长度小5字节
+            buffer(0) = &H63
+            buffer(1) = len
+            MyBase.Read(buffer, 2, len + 3)
 
-        len = MyBase.ReadByte()             '地址域+命令域+数据域，比帧长度小5字节
-        buffer(0) = &H63
-        buffer(1) = len
-        MyBase.Read(buffer, 2, len + 3)
+            If buffer(len + 4) <> &H16 Then Return False '不是以结束符结尾
+            If CS(buffer, len + 3) <> buffer(len + 3) Then Return False '校验错误
 
-        If buffer(len + 4) <> &H16 Then Return False '不是以结束符结尾
-        If CS(buffer, len + 3) <> buffer(len + 3) Then Return False '校验错误
-
-        Return True
+            Return True
+        End If
+        Return False
     End Function
 
 

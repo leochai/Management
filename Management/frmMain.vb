@@ -5,34 +5,21 @@ Imports LeoControls
 
 Public Class frmMain
     Dim ShowList(23) As ArrayList
+    Delegate Sub TextCallback(ByVal address As Byte)
     Public WithEvents RS232 As New LHSerialPort("COM3", 1200, Parity.Odd, 8, 1)
+
+
 
     Private Sub frmMain_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
         For Each item In _unit
             If item.isTesting Then
-                DownloadCmd.Polling(_COM, item)
+                DownloadCmd.Polling(RS232, item)
                 Threading.Thread.Sleep(20)
             End If
         Next
     End Sub
-    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        '------打开数据库
-        _DBconn.Open()
-        RS232.WriteBufferSize = 2048
-        RS232.ReadTimeout = 1000
-        RS232.ReceivedBytesThreshold = 3
-        RS232.Open()
 
-        Dim fs As New frmRoot
-        fs.Show()
-        fs.Label1.Text = "加载数据..."
-        fs.Refresh()
-
-        For i = 0 To 23
-            _unit(i) = New LHUnit
-        Next
-        DBMethord.Initial(_DBconn, _unit)
-
+    Private Sub PaintShow()
         For k = 0 To 23
             ShowList(k) = New ArrayList
             If _unit(k).器件类型 = 0 Then       '1位器件
@@ -68,7 +55,34 @@ Public Class frmMain
             End If
             TabControl1.TabPages(k).Show()
         Next
-        'OneSec.Enabled = True
+    End Sub '画界面
+
+    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        '------遮挡
+        Dim fs As New frmRoot
+        fs.Show()
+        fs.Label1.Text = "加载数据..."
+        fs.Refresh()
+
+        _pollingFlag = False
+        Dim PollingThread As New Thread(AddressOf PollingTask)
+        PollingThread.Start()
+
+        '------打开数据库
+        _DBconn.Open()
+        '------设置串口
+        RS232.WriteBufferSize = 2048
+        RS232.ReadTimeout = 200
+        RS232.ReceivedBytesThreshold = 3
+        RS232.Open()
+
+        For i = 0 To 23
+            _unit(i) = New LHUnit
+        Next
+        DBMethord.Initial(_DBconn, _unit)
+        PaintShow()
+
+        OneSec.Enabled = True
         fs.Close()
     End Sub
 
@@ -82,7 +96,7 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
-        
+
     End Sub
 
     Public Sub RefreshData(ByVal volt As Single, ByVal power As Single, _
@@ -128,22 +142,28 @@ Public Class frmMain
     End Sub '切换为全屏显示
 
     Private Sub OneSec_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OneSec.Tick
-        For Each item In _unit      '轮询
-            If item.isTesting Then
-                DownloadCmd.Polling(_COM, item)
+        _pollingFlag = True
+    End Sub
+
+    Private Sub PollingTask()
+        Dim k As Byte = 0
+        While True
+            If _pollingFlag Then
+                While Not _unit(k).isTesting
+                    k = (k + 1) Mod 24
+                End While
+                For i = 0 To 2
+                    DownloadCmd.Polling(RS232, _unit(k))
+                    Thread.Sleep(200)
+                    If RS232.ReadUp(_readBuffer) Then Exit For
+                Next
+                _pollingFlag = False
+                ReceievedTackle()
+                k = (k + 1) Mod 24
             End If
-        Next
-
+        End While
     End Sub
-
-    Private Sub RS232_DataReceived(ByVal sender As Object, _
-                                  ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles RS232.DataReceived
-        If RS232.ReadUp(_readBuffer) Then
-
-        End If
-    End Sub
-
-    Private Sub ReceievedTackle()
+    Private Sub ReceievedTackle()   '处理接收到的帧数据，分发给各处理单元
         Dim datalen As Byte = _readBuffer(1)
         Dim address As Byte = _readBuffer(3)
         Dim cmd As Byte = _readBuffer(4)
@@ -163,6 +183,7 @@ Public Class frmMain
             Case &H3C : ReplyNotSame(address)      '器件类型不符
         End Select
         BufferReset(_readBuffer)
+
     End Sub
 
     Private Sub BufferReset(ByRef buffer() As Byte)
@@ -189,4 +210,8 @@ Public Class frmMain
     Private Sub ReplyNotSame(ByVal address As Byte)
 
     End Sub
+    Private Sub showbyte(ByVal address As Byte)
+        TextBox1.Text = address.ToString("X2")
+    End Sub
+
 End Class

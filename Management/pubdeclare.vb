@@ -14,7 +14,7 @@ End Structure
 Module pubdeclare
     Public _DBconn As New OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0;Data Source=D:/老化台.accdb")
     Public _管理员密码 As String = "65108280"
-    Public WithEvents _COM As New LHSerialPort("COM3", 1200, Parity.Odd, 8, 1)
     Public _unit(23) As LHUnit
     Public _readBuffer(29) As Byte
+    Public _pollingFlag As Boolean
 End Module
