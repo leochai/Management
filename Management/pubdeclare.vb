@@ -17,4 +17,7 @@ Module pubdeclare
     Public _unit(23) As LHUnit
     Public _readBuffer(29) As Byte
     Public _pollingFlag As Boolean
+    Public _startupFlag As Byte
+    Public _distributeFlag As Byte
+    Public _integralFlag As Boolean
 End Module

@@ -9,14 +9,8 @@ Public Class frmMain
     Public WithEvents RS232 As New LHSerialPort("COM3", 1200, Parity.Odd, 8, 1)
 
 
-
     Private Sub frmMain_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
-        For Each item In _unit
-            If item.isTesting Then
-                DownloadCmd.Polling(RS232, item)
-                Threading.Thread.Sleep(20)
-            End If
-        Next
+        _startupFlag = 2
     End Sub
 
     Private Sub PaintShow()
@@ -65,8 +59,16 @@ Public Class frmMain
         fs.Refresh()
 
         _pollingFlag = False
+        _startupFlag = 0
+        _distributeFlag = 0
+        _integralFlag = False
+
         Dim PollingThread As New Thread(AddressOf PollingTask)
-        PollingThread.Start()
+        Dim StartupThread As New Thread(AddressOf StartupTask)
+        Dim DistributeThread As New Thread(AddressOf DistributeTask)
+
+        'PollingThread.Start()
+        StartupThread.Start()
 
         '------打开数据库
         _DBconn.Open()
@@ -82,7 +84,7 @@ Public Class frmMain
         DBMethord.Initial(_DBconn, _unit)
         PaintShow()
 
-        OneSec.Enabled = True
+        'OneSec.Enabled = True
         fs.Close()
     End Sub
 
@@ -145,21 +147,62 @@ Public Class frmMain
         _pollingFlag = True
     End Sub
 
-    Private Sub PollingTask()
+    Private Sub PollingTask()   '轮询线程任务（有bug：收不到还是会执行receivedtackle,下同）
         Dim k As Byte = 0
+        Dim i As Byte
         While True
             If _pollingFlag Then
                 While Not _unit(k).isTesting
                     k = (k + 1) Mod 24
                 End While
-                For i = 0 To 2
+                For i = 0 To 2      '如果没有收到回复，重复发送三遍
                     DownloadCmd.Polling(RS232, _unit(k))
                     Thread.Sleep(200)
                     If RS232.ReadUp(_readBuffer) Then Exit For
                 Next
-                _pollingFlag = False
-                ReceievedTackle()
+                If i <= 2 Then ReceievedTackle()
                 k = (k + 1) Mod 24
+            End If
+            _pollingFlag = False
+        End While
+    End Sub
+
+    Private Sub StartupTask()   '启动线程任务
+        Dim i As Byte
+        While True
+            If _startupFlag > 0 Then
+                For i = 0 To 2
+                    DownloadCmd.Startup(RS232, _unit(_startupFlag - 1))
+                    Thread.Sleep(200)
+                    If RS232.ReadUp(_readBuffer) Then Exit For
+                Next
+                If i <= 2 Then ReceievedTackle()
+                _startupFlag = 0
+            End If
+        End While
+    End Sub
+
+    Private Sub DistributeTask()
+        Dim i As Byte
+        While True
+            If _distributeFlag > 0 Then
+                For i = 0 To 2
+                    DownloadCmd.Distribute(RS232, _unit(_distributeFlag - 1))
+                    Thread.Sleep(200)
+                    If RS232.ReadUp(_readBuffer) Then Exit For
+                Next
+                If i <= 2 Then ReceievedTackle()
+                _distributeFlag = 0
+            End If
+        End While
+    End Sub
+
+    Private Sub IntegralTask()
+        Dim i As Byte
+        While True
+            If _integralFlag Then
+
+                _integralFlag = False
             End If
         End While
     End Sub
@@ -182,7 +225,7 @@ Public Class frmMain
             Case &H30 : ReplyStartup(address)      '启动确认
             Case &H3C : ReplyNotSame(address)      '器件类型不符
         End Select
-        BufferReset(_readBuffer)
+        BufferReset(_readBuffer)    '处理完毕清空缓存
 
     End Sub
 
@@ -205,7 +248,7 @@ Public Class frmMain
 
     End Sub
     Private Sub ReplyStartup(ByVal address As Byte)
-
+        MsgBox("启动成功！", MsgBoxStyle.OkOnly)
     End Sub
     Private Sub ReplyNotSame(ByVal address As Byte)
 
