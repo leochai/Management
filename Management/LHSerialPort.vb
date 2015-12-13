@@ -1,7 +1,9 @@
-﻿Imports System.IO.Ports
-
+﻿
 Public Class LHSerialPort
-    Inherits SerialPort
+    Inherits System.IO.Ports.SerialPort
+
+    Public outputbuffer(31) As Byte
+    Public outputlength As Byte
 
     Public Shared beginning As Byte = &HA5   '起始符
     Public Shared terminal As Byte = &H16   '结束符
@@ -12,7 +14,7 @@ Public Class LHSerialPort
     Public Shared cmdDistribute As Byte = &HF   '参数下发
     Public Shared cmdStartup As Byte = &H30 '启动
     Public Sub New(ByVal portName As String, ByVal baudRate As Integer, _
-                   ByVal parity As Parity, ByVal dataBits As Integer, ByVal stopBits As StopBits)
+                   ByVal parity As IO.Ports.Parity, ByVal dataBits As Integer, ByVal stopBits As IO.Ports.StopBits)
         MyBase.new(portName, baudRate, parity, dataBits, stopBits)
     End Sub
     Private Function CS(ByVal input() As Byte, ByVal len As Integer) As Byte
@@ -47,6 +49,9 @@ Public Class LHSerialPort
         wbuffer(5) = CS(wbuffer, wbuffer.Length)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
+
+        outputbuffer = wbuffer
+        outputlength = wbuffer.Length
     End Sub
 
     '发送启动帧
@@ -60,28 +65,34 @@ Public Class LHSerialPort
         wbuffer(5) = CS(wbuffer, wbuffer.Length)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
+
+        outputbuffer = wbuffer
+        outputlength = wbuffer.Length
     End Sub
 
     '发送参数下发帧
     Public Sub WriteDistribute(ByVal address As Byte, ByVal prm As prmDistribute)
-        Dim wbuffer(18) As Byte
+        Dim wbuffer(24) As Byte
         wbuffer(0) = beginning
-        wbuffer(1) = 14
+        wbuffer(1) = 20
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdDistribute
         wbuffer(5) = prm.second
         wbuffer(6) = prm.minute
         wbuffer(7) = prm.hour
-        For i = 0 To 5
+        For i = 0 To 11
             wbuffer(8 + i) = prm.pos(i)
         Next
-        wbuffer(14) = prm.type
-        wbuffer(15) = prm.max
-        wbuffer(16) = prm.mini
-        wbuffer(17) = CS(wbuffer, wbuffer.Length)
-        wbuffer(18) = terminal
+        wbuffer(20) = prm.type
+        wbuffer(21) = prm.max
+        wbuffer(22) = prm.mini
+        wbuffer(23) = CS(wbuffer, wbuffer.Length)
+        wbuffer(24) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
+
+        outputbuffer = wbuffer
+        outputlength = wbuffer.Length
     End Sub
 
     '发送整点数据请求帧
@@ -96,8 +107,10 @@ Public Class LHSerialPort
         wbuffer(5) = (part << 6) + time
         wbuffer(6) = CS(wbuffer, wbuffer.Length)
         wbuffer(7) = terminal
-
         MyBase.Write(wbuffer, 0, wbuffer.Length)
+
+        outputbuffer = wbuffer
+        outputlength = wbuffer.Length
     End Sub
 
     Public Function ReadUp(ByRef buffer() As Byte) As Boolean

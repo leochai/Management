@@ -25,6 +25,7 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.TabPage2 = New System.Windows.Forms.TabPage
         Me.TabPage3 = New System.Windows.Forms.TabPage
         Me.TabPage4 = New System.Windows.Forms.TabPage
@@ -56,13 +57,26 @@ Partial Class frmMain
         Me.btnMin = New System.Windows.Forms.Button
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.Label8 = New System.Windows.Forms.Label
+        Me.cmbUnitNo = New System.Windows.Forms.ComboBox
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.btnBegin = New System.Windows.Forms.Button
         Me.btnMax = New System.Windows.Forms.Button
         Me.OneSec = New System.Windows.Forms.Timer(Me.components)
-        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+        Me.OneMin = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -104,6 +118,7 @@ Partial Class frmMain
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.Transparent
+        Me.TabPage1.Controls.Add(Me.TextBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -111,6 +126,16 @@ Partial Class frmMain
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(147, 6)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox1.Size = New System.Drawing.Size(477, 349)
+        Me.TextBox1.TabIndex = 16
         '
         'TabPage2
         '
@@ -377,6 +402,18 @@ Partial Class frmMain
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.cmbUnitNo)
+        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.btnBegin)
         Me.GroupBox1.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 74)
         Me.GroupBox1.Name = "GroupBox1"
@@ -385,12 +422,113 @@ Partial Class frmMain
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "参数设置"
         '
-        'TextBox1
+        'Label8
         '
-        Me.TextBox1.Location = New System.Drawing.Point(215, 40)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(329, 21)
-        Me.TextBox1.TabIndex = 16
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(20, 55)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(63, 14)
+        Me.Label8.TabIndex = 21
+        Me.Label8.Text = "单元编号"
+        '
+        'cmbUnitNo
+        '
+        Me.cmbUnitNo.FormattingEnabled = True
+        Me.cmbUnitNo.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
+        Me.cmbUnitNo.Location = New System.Drawing.Point(98, 52)
+        Me.cmbUnitNo.Name = "cmbUnitNo"
+        Me.cmbUnitNo.Size = New System.Drawing.Size(72, 21)
+        Me.cmbUnitNo.TabIndex = 20
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"4GH302", "GH302", "4GO213", "GHB302", "GO11", "GH137"})
+        Me.ComboBox1.Location = New System.Drawing.Point(99, 77)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(72, 21)
+        Me.ComboBox1.TabIndex = 20
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(98, 277)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(86, 55)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(95, 30)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(77, 14)
+        Me.Label2.TabIndex = 18
+        Me.Label2.Text = "光电耦合器"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(20, 194)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(63, 14)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "例试编号"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(20, 166)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(49, 14)
+        Me.Label6.TabIndex = 18
+        Me.Label6.Text = "标准号"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(20, 137)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 14)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "生产批号"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(20, 108)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(63, 14)
+        Me.Label4.TabIndex = 18
+        Me.Label4.Text = "产品类型"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(20, 80)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(63, 14)
+        Me.Label3.TabIndex = 18
+        Me.Label3.Text = "产品型号"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(20, 30)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(63, 14)
+        Me.Label1.TabIndex = 18
+        Me.Label1.Text = "产品名称"
+        '
+        'btnBegin
+        '
+        Me.btnBegin.Location = New System.Drawing.Point(141, 563)
+        Me.btnBegin.Name = "btnBegin"
+        Me.btnBegin.Size = New System.Drawing.Size(71, 34)
+        Me.btnBegin.TabIndex = 17
+        Me.btnBegin.Text = "试验开始"
+        Me.btnBegin.UseVisualStyleBackColor = True
         '
         'btnMax
         '
@@ -407,13 +545,16 @@ Partial Class frmMain
         '
         Me.OneSec.Interval = 1000
         '
+        'OneMin
+        '
+        Me.OneMin.Interval = 60000
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 692)
         Me.Controls.Add(Me.btnMax)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnMin)
@@ -425,9 +566,13 @@ Partial Class frmMain
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "光电耦合器稳态工作寿命台管理软件"
         Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -468,6 +613,18 @@ Partial Class frmMain
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents btnMax As System.Windows.Forms.Button
     Friend WithEvents OneSec As System.Windows.Forms.Timer
-    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
+    Friend WithEvents OneMin As System.Windows.Forms.Timer
+    Friend WithEvents btnBegin As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents cmbUnitNo As System.Windows.Forms.ComboBox
 
 End Class
