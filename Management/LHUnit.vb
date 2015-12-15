@@ -6,11 +6,12 @@
     Public 电压规格 As Byte '0-21V,1-25V,2-28V,3以上保留
     Public 功率 As Byte
     Public 生产批号 As String
-    Public 例试编号 As String
-    Public 开机时间 As Date
+    Public 试验编号 As String
+    Public 开机日期 As Date
     Public 操作员 As String
     Public 对位表(95) As Byte
-    Public 器件类型 As Byte '0-单位，1-双位，2-四位
+    Public 座子类型 As Boolean  '0-四位，1-单位
+    Public 器件类型 As Byte     '0-单位，1-双位，2-四位
     Public address As Byte
     Public isTesting As Boolean
     Public lastHour As Byte

@@ -6,6 +6,11 @@ Imports LeoControls
 Public Class frmMain
     Dim ShowList(23) As ArrayList
     Delegate Sub TextCallback(ByVal cmd() As Byte, ByVal len As Byte)
+    Delegate Sub Polling_dg1(ByVal volt As Single, ByVal power As Single, _
+                             ByVal unitnum As Byte, ByVal cellnum As Byte)
+    Delegate Sub Polling_dg4(ByVal volt As Single, ByVal power As Single, _
+                             ByVal unitnum As Byte, ByVal cellnum As Byte, ByVal cellpos As Byte)
+
     Public RS485 As New LHSerialPort("COM3", 1200, Parity.Odd, 8, 1)
 
     Dim CommThread As New Thread(AddressOf CommTask)
@@ -26,7 +31,7 @@ Public Class frmMain
     Private Sub PaintShow()
         For k = 0 To 23
             ShowList(k) = New ArrayList
-            If _unit(k).器件类型 = 0 Then       '1位器件
+            If _unit(k).座子类型 Then       '1位器件
                 Dim sshow(47) As OneShow
                 For j = 0 To 3
                     For i = 0 To 11
@@ -116,15 +121,15 @@ Public Class frmMain
         frm数据检索.ShowDialog()
     End Sub
 
-    Public Sub PollingShow(ByVal volt As Single, ByVal power As Single, _
+    Public Sub PollingShow1(ByVal volt As Single, ByVal power As Single, _
                            ByVal unitnum As Byte, ByVal cellnum As Byte)
         ShowList(unitnum - 1).Item(cellnum - 1).setResult(volt, power)
-    End Sub '更新实时数据显示（重载）
+    End Sub '更新实时数据显示1位
 
-    Public Sub PollingShow(ByVal volt As Single, ByVal power As Single, _
+    Public Sub PollingShow4(ByVal volt As Single, ByVal power As Single, _
                            ByVal unitnum As Byte, ByVal cellnum As Byte, ByVal cellpos As Byte)
         ShowList(unitnum - 1).Item(cellnum - 1).setResult(volt, power, cellpos)
-    End Sub '更新实时数据显示（重载）
+    End Sub '更新实时数据显示4位
 
     Private Sub btnMin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMin.Click
         TabControl1.Hide()
@@ -201,10 +206,15 @@ Public Class frmMain
         For i = 0 To 2      '如果没有收到回复，重复发送三遍
             DownloadCmd.Polling(RS485, _unit(unitNo))
             Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-            Thread.Sleep(150)
+            Thread.Sleep(360)
             If RS485.ReadUp(_readBuffer) Then Exit For
         Next
         If i <= 2 Then ReceievedTackle()
+        'DownloadCmd.Polling(RS485, _unit(unitNo))
+        'Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
+        'Thread.Sleep(500)
+        'RS485.ReadUp(_readBuffer)
+        'ReceievedTackle()
     End Sub
 
     Private Sub StartupTask(ByVal unitNo As Byte)   '启动任务
@@ -212,7 +222,7 @@ Public Class frmMain
         DistributeTask(unitNo)
         For i = 0 To 2
             DownloadCmd.Startup(RS485, _unit(unitNo))
-            Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
+            'Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
             Thread.Sleep(200)
             If RS485.ReadUp(_readBuffer) Then Exit For
         Next
@@ -280,8 +290,8 @@ Public Class frmMain
         Dim cmd As Byte = _readBuffer(4)
         Dim data() As Byte
         If datalen Then
-            ReDim data(datalen - 1)
-            For i = 0 To datalen - 1
+            ReDim data(datalen - 3)
+            For i = 0 To datalen - 3
                 data(i) = _readBuffer(i + 5)
             Next
         End If
@@ -310,13 +320,13 @@ Public Class frmMain
         Dim i As Byte                       '循环变量
         Select Case status
             Case &H0    '正常
-                Dim type As Byte = (data(10) >> 4)  '读取器件位数
+                Dim type As Byte = (data(11) >> 4)  '读取器件位数
                 Dim v_plus As Byte = data(2)        '实测电压偏移量
                 Dim pos As Byte = data(1)           '老化位
                 Dim v_std As Byte                   '电压标准
                 Dim v As Single                     '实际电压
                 Dim mA As Single = 0.01             '电流值
-                Select Case (data(10) And &H3)
+                Select Case (data(11) And &H3)
                     Case 0 : v_std = 21
                     Case 1 : v_std = 25
                     Case 2 : v_std = 28
@@ -331,9 +341,13 @@ Public Class frmMain
                 Next
 
                 If type = 0 Then    '1位器件的显示
-                    PollingShow(v, v * mA, i + 1, pos)
+                    'PollingShow(v, v * mA, i + 1, pos)
+                    Me.Invoke(New Polling_dg1(AddressOf PollingShow1), _
+                              v, v * mA, CByte(i + 1), pos)
                 Else
-                    PollingShow(v, v * mA, i + 1, (pos - 1) \ 4 + 1, (pos - 1) Mod 4)
+                    'PollingShow(v, v * mA, i + 1, (pos - 1) \ 4 + 1, (pos - 1) Mod 4)
+                    Me.Invoke(New Polling_dg4(AddressOf PollingShow4), _
+                             v, v * mA, CByte(i + 1), CByte((pos - 1) \ 4 + 1), CByte((pos - 1) Mod 4))
                 End If
             Case &H3    '请求参数
                 For i = 0 To 23
@@ -403,4 +417,10 @@ Public Class frmMain
         TabControl1.SelectedIndex = cmbUnitNo.SelectedIndex
     End Sub
 
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        RS485.ReadUp(_readBuffer)
+        For i = 0 To _readBuffer.Length - 1
+            TextBox1.Text += _readBuffer(i).ToString("X2") & " "
+        Next
+    End Sub
 End Class

@@ -12,6 +12,7 @@ Public Class DBMethord
                 .isTesting = reader("运行状态")
                 .address = reader("单元地址")
                 .lastHour = reader("最近上传时间")
+                .座子类型 = reader("座子类型")
                 '-----待补充
             End With
         End While
