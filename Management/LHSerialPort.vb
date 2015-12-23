@@ -46,7 +46,7 @@ Public Class LHSerialPort
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdOrdinary
-        wbuffer(5) = CS(wbuffer, wbuffer.Length)
+        wbuffer(5) = CS(wbuffer, wbuffer.Length - 2)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
 
@@ -62,7 +62,7 @@ Public Class LHSerialPort
         wbuffer(2) = beginning
         wbuffer(3) = address
         wbuffer(4) = cmdStartup
-        wbuffer(5) = CS(wbuffer, wbuffer.Length)
+        wbuffer(5) = CS(wbuffer, wbuffer.Length - 2)
         wbuffer(6) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
 
@@ -87,7 +87,7 @@ Public Class LHSerialPort
         wbuffer(20) = prm.type
         wbuffer(21) = prm.max
         wbuffer(22) = prm.mini
-        wbuffer(23) = CS(wbuffer, wbuffer.Length)
+        wbuffer(23) = CS(wbuffer, wbuffer.Length - 2)
         wbuffer(24) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
 
@@ -105,7 +105,7 @@ Public Class LHSerialPort
         wbuffer(3) = address
         wbuffer(4) = cmdIntegral
         wbuffer(5) = (part << 6) + time
-        wbuffer(6) = CS(wbuffer, wbuffer.Length)
+        wbuffer(6) = CS(wbuffer, wbuffer.Length - 2)
         wbuffer(7) = terminal
         MyBase.Write(wbuffer, 0, wbuffer.Length)
 

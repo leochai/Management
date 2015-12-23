@@ -25,7 +25,13 @@ Public Class frmMain
         'Dim pos As Byte = 50
         ''PollingShow(v, v * mA, i, (pos - 1) \ 4, (pos - 1) Mod 4)
         'PollingShow(v, v * mA, i + 1, (pos - 1) \ 4 + 1, (pos - 1) Mod 4)
+
         OneSec.Enabled = Not OneSec.Enabled
+        'Dim cmd As New OleDbCommand
+        'cmd.Connection = _DBconn
+        'cmd.CommandText = "delete * from 试验结果"
+        'cmd.ExecuteNonQuery()
+        'Button1.Text = "ok"
     End Sub '测试
 
     Private Sub PaintShow()
@@ -367,7 +373,13 @@ Public Class frmMain
         End Select
     End Sub
     Private Sub ReplyIntegral(ByVal address As Byte, ByVal data() As Byte)
+        Dim i As Byte
+        For i = 0 To 23
+            If address = _unit(i).address Then Exit For
+        Next
 
+        Dim part As Byte = data(0) >> 6
+        Dim hour As Byte = data(0) And &H1F
     End Sub
     Private Sub ReplyDistribute(ByVal address As Byte)
         '保留
@@ -414,7 +426,14 @@ Public Class frmMain
     End Sub
 
     Private Sub cmbUnitNo_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbUnitNo.SelectedIndexChanged
-        TabControl1.SelectedIndex = cmbUnitNo.SelectedIndex
+        Dim index As Byte = cmbUnitNo.SelectedIndex
+        TabControl1.SelectedIndex = index
+        lblVolt.Text = _unit(index).电压规格 & " V"
+        If _unit(index).座子类型 Then
+            lblLeg.Text = "一位"
+        Else
+            lblLeg.Text = "四位"
+        End If
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

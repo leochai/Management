@@ -1,4 +1,3 @@
-D:\老化台\management\Management\Management\obj\Debug\ResolveAssemblyReference.cache
 D:\老化台\management\Management\Management\obj\Debug\Management.frmLogin.resources
 D:\老化台\management\Management\Management\obj\Debug\Management.frmMain.resources
 D:\老化台\management\Management\Management\obj\Debug\Management.frmPosChart1.resources
@@ -20,3 +19,4 @@ D:\老化台\management\Management\Management\bin\Debug\LeoControls.xml
 D:\老化台\management\Management\Management\obj\Debug\Management.exe
 D:\老化台\management\Management\Management\obj\Debug\Management.xml
 D:\老化台\management\Management\Management\obj\Debug\Management.pdb
+D:\老化台\management\Management\Management\obj\Debug\Management.vbprojResolveAssemblyReference.cache
