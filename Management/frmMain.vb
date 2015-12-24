@@ -374,12 +374,29 @@ Public Class frmMain
     End Sub
     Private Sub ReplyIntegral(ByVal address As Byte, ByVal data() As Byte)
         Dim i As Byte
+        Dim dbcmd As New OleDbCommand
+        dbcmd.Connection = _DBconn
+
         For i = 0 To 23
             If address = _unit(i).address Then Exit For
         Next
 
         Dim part As Byte = data(0) >> 6
         Dim hour As Byte = data(0) And &H1F
+
+        For k = 1 To 24
+            If _unit(i).对位表(k + part * 24) Then
+                Dim volt As Single
+                If data(k) >> 7 Then
+                    volt = _unit(i).单元电压 - (data(k) And &H7F) * 0.05
+                Else
+                    volt = _unit(i).单元电压 + (data(k) And &H7F) * 0.05
+                End If
+                Dim power As Single = volt * (0.075 / _unit(i).单元电压)
+                DBMethord.WriteResult(_unit(i).试验编号, _unit(i).对位表(k + part * 24), _
+                                      hour, volt, power)
+            End If
+        Next
     End Sub
     Private Sub ReplyDistribute(ByVal address As Byte)
         '保留

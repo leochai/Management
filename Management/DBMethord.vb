@@ -33,7 +33,23 @@ Public Class DBMethord
         Next
     End Sub
 
-    Public Shared Sub WriteResult()
+    Public Shared Sub WriteResult(ByVal testnum As String, ByVal chipnum As Byte, ByVal hour As Byte, _
+                                  ByVal volt As Single, ByVal power As Single)
+        Dim dbcmd As New OleDbCommand
+        dbcmd.Connection = _DBconn
 
+        Dim rdate As Date = Now
+        rdate = rdate.AddHours(hour - rdate.Hour)
+        If hour > Now.Hour Then
+            rdate = rdate.AddDays(-1)
+        End If
+
+        dbcmd.CommandText = "insert into 试验结果 values('" _
+                            & testnum & "','" _
+                            & chipnum & "','" _
+                            & rdate & "','" _
+                            & volt & "','" _
+                            & power & "')"
+        dbcmd.ExecuteNonQuery
     End Sub
 End Class
