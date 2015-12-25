@@ -212,7 +212,7 @@ Public Class frmMain
         For i = 0 To 2      '如果没有收到回复，重复发送三遍
             DownloadCmd.Polling(RS485, _unit(unitNo))
             Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-            Thread.Sleep(360)
+            Thread.Sleep(300 + 210)
             If RS485.ReadUp(_readBuffer) Then Exit For
         Next
         If i <= 2 Then ReceievedTackle()
@@ -229,7 +229,7 @@ Public Class frmMain
         For i = 0 To 2
             DownloadCmd.Startup(RS485, _unit(unitNo))
             'Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-            Thread.Sleep(200)
+            Thread.Sleep(300 + 120)
             If RS485.ReadUp(_readBuffer) Then Exit For
         Next
         If i <= 2 Then ReceievedTackle()
@@ -240,7 +240,7 @@ Public Class frmMain
         For i = 0 To 2
             DownloadCmd.Distribute(RS485, _unit(unitNo))
             Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-            Thread.Sleep(200)
+            Thread.Sleep(300 + 260)
             If RS485.ReadUp(_readBuffer) Then Exit For
         Next
         If i <= 2 Then ReceievedTackle()
@@ -258,28 +258,28 @@ Public Class frmMain
                     For i = 0 To 2
                         DownloadCmd.Integral(RS485, _unit(k), 0, _unit(k).lastHour)
                         Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-                        Thread.Sleep(300)
+                        Thread.Sleep(300 + 320)
                         If RS485.ReadUp(_readBuffer) Then Exit For
                     Next
                     If i <= 2 Then ReceievedTackle()
                     For i = 0 To 2
                         DownloadCmd.Integral(RS485, _unit(k), 1, _unit(k).lastHour)
                         Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-                        Thread.Sleep(300)
+                        Thread.Sleep(300 + 320)
                         If RS485.ReadUp(_readBuffer) Then Exit For
                     Next
                     If i <= 2 Then ReceievedTackle()
                     For i = 0 To 2
                         DownloadCmd.Integral(RS485, _unit(k), 2, _unit(k).lastHour)
                         Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-                        Thread.Sleep(300)
+                        Thread.Sleep(300 + 320)
                         If RS485.ReadUp(_readBuffer) Then Exit For
                     Next
                     If i <= 2 Then ReceievedTackle()
                     For i = 0 To 2
                         DownloadCmd.Integral(RS485, _unit(k), 3, _unit(k).lastHour)
                         Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
-                        Thread.Sleep(300)
+                        Thread.Sleep(300 + 320)
                         If RS485.ReadUp(_readBuffer) Then Exit For
                     Next
                     If i <= 2 Then ReceievedTackle()
