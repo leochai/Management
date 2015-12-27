@@ -15,7 +15,6 @@ Public Class frmMain
 
     Dim CommThread As New Thread(AddressOf CommTask)
 
-
     Private Sub frmMain_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
         '_integralFlag = True
         'ShowList(6).Item(5).setResult(5.5, 6.6)
@@ -26,7 +25,8 @@ Public Class frmMain
         ''PollingShow(v, v * mA, i, (pos - 1) \ 4, (pos - 1) Mod 4)
         'PollingShow(v, v * mA, i + 1, (pos - 1) \ 4 + 1, (pos - 1) Mod 4)
 
-        OneSec.Enabled = Not OneSec.Enabled
+        'OneSec.Enabled = False
+        _commFlag.integral = True
         'Dim cmd As New OleDbCommand
         'cmd.Connection = _DBconn
         'cmd.CommandText = "delete * from 试验结果"
@@ -71,6 +71,7 @@ Public Class frmMain
             TabControl1.TabPages(k).Show()
         Next
     End Sub '画界面
+
     Private Sub ThreadInit()
         _commFlag.polling = False
         _commFlag.startup = False
@@ -113,11 +114,10 @@ Public Class frmMain
 
         PaintShow()     '绘制界面
         ThreadInit()    '线程初始化
-        OneSec.Enabled = True
+        'OneSec.Enabled = True
         'OneMin.Enabled = True
         fs.Close()
     End Sub
-
 
     Private Sub 操作员管理ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 操作员管理ToolStripMenuItem.Click
         frmLogin.ShowDialog()
@@ -207,6 +207,7 @@ Public Class frmMain
             End If
         End While
     End Sub
+
     Private Sub PollingTask(ByVal unitNo As Byte)   '轮询任务
         Dim i As Byte
         For i = 0 To 2      '如果没有收到回复，重复发送三遍
@@ -269,6 +270,9 @@ Public Class frmMain
                         If RS485.ReadUp(_readBuffer) Then Exit For
                     Next
                     If i <= 2 Then ReceievedTackle()
+
+                    If _unit(k).座子类型 Then Continue While '若是1位的座子，则只需要召回48位数据
+
                     For i = 0 To 2
                         DownloadCmd.Integral(RS485, _unit(k), 2, _unit(k).lastHour)
                         Me.Invoke(New TextCallback(AddressOf showbyte), RS485.outputbuffer, RS485.outputlength)
@@ -286,6 +290,7 @@ Public Class frmMain
                 End While
             End If
         Next
+        _commFlag.integral = False
         OneSec.Enabled = True       '此处有问题，子线程控制控件
         GroupBox1.Enabled = True
     End Sub
@@ -321,6 +326,7 @@ Public Class frmMain
     Private Sub ReplyNegative(ByVal address As Byte)
         
     End Sub
+
     Private Sub ReplyOrdinary(ByVal address As Byte, ByVal data() As Byte)
         Dim status As Byte = data(0)        '读取状态
         Dim i As Byte                       '循环变量
@@ -372,11 +378,9 @@ Public Class frmMain
                 Next
         End Select
     End Sub
+
     Private Sub ReplyIntegral(ByVal address As Byte, ByVal data() As Byte)
         Dim i As Byte
-        Dim dbcmd As New OleDbCommand
-        dbcmd.Connection = _DBconn
-
         For i = 0 To 23
             If address = _unit(i).address Then Exit For
         Next
@@ -384,23 +388,69 @@ Public Class frmMain
         Dim part As Byte = data(0) >> 6
         Dim hour As Byte = data(0) And &H1F
 
-        For k = 1 To 24
-            If _unit(i).对位表(k + part * 24) Then
-                Dim volt As Single
-                If data(k) >> 7 Then
-                    volt = _unit(i).单元电压 - (data(k) And &H7F) * 0.05
-                Else
-                    volt = _unit(i).单元电压 + (data(k) And &H7F) * 0.05
+        If _unit(i).器件类型 = 0 Then       '1位器件的数据压入
+            For k = 0 To 23
+                If _unit(i).对位表(k + part * 24) Then
+                    Dim volt As Single
+                    If data(k) >> 7 Then
+                        volt = _unit(i).电压规格 - (data(k) And &H7F) * 0.05
+                    Else
+                        volt = _unit(i).电压规格 + (data(k) And &H7F) * 0.05
+                    End If
+                    Dim power As Single = volt * (0.075 / _unit(i).电压规格)
+
+                    DBMethord.WriteResult(_unit(i).试验编号, _unit(i).对位表(k + part * 24), _
+                                          CByte(1), hour, volt, power)
                 End If
-                Dim power As Single = volt * (0.075 / _unit(i).单元电压)
-                DBMethord.WriteResult(_unit(i).试验编号, _unit(i).对位表(k + part * 24), _
-                                      hour, volt, power)
-            End If
-        Next
+            Next
+        End If
+
+        If _unit(i).器件类型 = 1 Then       '2位器件的数据压入
+            Dim isFirst As Boolean = True
+            For k = 0 To 23
+                If _unit(i).对位表(k + part * 24) Then
+                    Dim volt As Single
+                    If data(k) >> 7 Then
+                        volt = _unit(i).电压规格 - (data(k) And &H7F) * 0.05
+                    Else
+                        volt = _unit(i).电压规格 + (data(k) And &H7F) * 0.05
+                    End If
+                    Dim power As Single = volt * (0.075 / _unit(i).电压规格)
+                    Dim subnum As Byte
+                    If isFirst Then
+                        subnum = 1
+                    Else
+                        subnum = 2
+                    End If
+                    DBMethord.WriteResult(_unit(i).试验编号, _unit(i).对位表(k + part * 24), _
+                                          subnum, hour, volt, power)
+                    isFirst = Not isFirst
+                End If
+            Next
+        End If
+
+        If _unit(i).器件类型 = 2 Then       '4位器件的数据压入
+            For k = 0 To 23
+                If _unit(i).对位表(k + part * 24) Then
+                    Dim volt As Single
+                    If data(k) >> 7 Then
+                        volt = _unit(i).电压规格 - (data(k) And &H7F) * 0.05
+                    Else
+                        volt = _unit(i).电压规格 + (data(k) And &H7F) * 0.05
+                    End If
+                    Dim power As Single = volt * (0.075 / _unit(i).电压规格)
+
+                    DBMethord.WriteResult(_unit(i).试验编号, _unit(i).对位表(k + part * 24), _
+                                          CByte((k + part * 24) Mod 4 + 1), hour, volt, power)
+                End If
+            Next
+        End If
     End Sub
+
     Private Sub ReplyDistribute(ByVal address As Byte)
         '保留
     End Sub
+
     Private Sub ReplyStartup(ByVal address As Byte)
         For i = 0 To 23
             If _unit(i).address = address Then
@@ -414,6 +464,7 @@ Public Class frmMain
             End If
         Next
     End Sub
+
     Private Sub ReplyNotSame(ByVal address As Byte)
         Dim i As Byte
         Dim str As String
@@ -431,7 +482,6 @@ Public Class frmMain
         TextBox1.Text += vbNewLine
     End Sub
 
-    
     Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
         TextBox1.SelectionStart = TextBox1.TextLength
         TextBox1.ScrollToCaret()

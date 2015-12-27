@@ -58,8 +58,8 @@ Public Class DBMethord
         Next
     End Sub
 
-    Public Shared Sub WriteResult(ByVal testnum As String, ByVal chipnum As Byte, ByVal hour As Byte, _
-                                  ByVal volt As Single, ByVal power As Single)
+    Public Shared Sub WriteResult(ByVal testnum As String, ByVal chipnum As Byte, ByVal num As Byte, _
+                                  ByVal hour As Byte, ByVal volt As Single, ByVal power As Single)
         Dim dbcmd As New OleDbCommand
         dbcmd.Connection = _DBconn
 
@@ -72,9 +72,10 @@ Public Class DBMethord
         dbcmd.CommandText = "insert into 试验结果 values('" _
                             & testnum & "','" _
                             & chipnum & "','" _
+                            & num & "','" _
                             & rdate & "','" _
                             & volt & "','" _
                             & power & "')"
-        dbcmd.ExecuteNonQuery
+        dbcmd.ExecuteNonQuery()
     End Sub
 End Class
