@@ -288,10 +288,12 @@ Public Class frmMain
                     Next
                     If i <= 2 Then ReceievedTackle()
                 End While
+                DBMethord.UpdateHour(k + 1, _unit(k).lastHour)
             End If
         Next
         _commFlag.integral = False
-        OneSec.Enabled = True       '此处有问题，子线程控制控件
+
+        OneSec.Enabled = True       '此处可能有问题，子线程控制控件
         GroupBox1.Enabled = True
     End Sub
 
@@ -497,9 +499,9 @@ Public Class frmMain
         TabControl1.SelectedIndex = index
         lblVolt.Text = _unit(index).电压规格 & " V"
         If _unit(index).座子类型 Then
-            lblLeg.Text = "一位"
+            lblSeatLeg.Text = "一位"
         Else
-            lblLeg.Text = "四位"
+            lblSeatLeg.Text = "四位"
         End If
     End Sub
 

@@ -22,60 +22,64 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.TabPage3 = New System.Windows.Forms.TabPage
-        Me.TabPage4 = New System.Windows.Forms.TabPage
-        Me.TabPage5 = New System.Windows.Forms.TabPage
-        Me.TabPage6 = New System.Windows.Forms.TabPage
-        Me.TabPage7 = New System.Windows.Forms.TabPage
-        Me.TabPage8 = New System.Windows.Forms.TabPage
-        Me.TabPage9 = New System.Windows.Forms.TabPage
-        Me.TabPage10 = New System.Windows.Forms.TabPage
-        Me.TabPage11 = New System.Windows.Forms.TabPage
-        Me.TabPage12 = New System.Windows.Forms.TabPage
-        Me.TabPage13 = New System.Windows.Forms.TabPage
-        Me.TabPage14 = New System.Windows.Forms.TabPage
-        Me.TabPage15 = New System.Windows.Forms.TabPage
-        Me.TabPage16 = New System.Windows.Forms.TabPage
-        Me.TabPage17 = New System.Windows.Forms.TabPage
-        Me.TabPage18 = New System.Windows.Forms.TabPage
-        Me.TabPage19 = New System.Windows.Forms.TabPage
-        Me.TabPage20 = New System.Windows.Forms.TabPage
-        Me.TabPage21 = New System.Windows.Forms.TabPage
-        Me.TabPage22 = New System.Windows.Forms.TabPage
-        Me.TabPage23 = New System.Windows.Forms.TabPage
-        Me.TabPage24 = New System.Windows.Forms.TabPage
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
-        Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.操作员管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.试验数据检索ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.设置ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.btnMin = New System.Windows.Forms.Button
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lblLeg = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.cmbUnitNo = New System.Windows.Forms.ComboBox
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.lblVolt = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnBegin = New System.Windows.Forms.Button
-        Me.btnMax = New System.Windows.Forms.Button
+        Me.components = New System.ComponentModel.Container()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.TabPage8 = New System.Windows.Forms.TabPage()
+        Me.TabPage9 = New System.Windows.Forms.TabPage()
+        Me.TabPage10 = New System.Windows.Forms.TabPage()
+        Me.TabPage11 = New System.Windows.Forms.TabPage()
+        Me.TabPage12 = New System.Windows.Forms.TabPage()
+        Me.TabPage13 = New System.Windows.Forms.TabPage()
+        Me.TabPage14 = New System.Windows.Forms.TabPage()
+        Me.TabPage15 = New System.Windows.Forms.TabPage()
+        Me.TabPage16 = New System.Windows.Forms.TabPage()
+        Me.TabPage17 = New System.Windows.Forms.TabPage()
+        Me.TabPage18 = New System.Windows.Forms.TabPage()
+        Me.TabPage19 = New System.Windows.Forms.TabPage()
+        Me.TabPage20 = New System.Windows.Forms.TabPage()
+        Me.TabPage21 = New System.Windows.Forms.TabPage()
+        Me.TabPage22 = New System.Windows.Forms.TabPage()
+        Me.TabPage23 = New System.Windows.Forms.TabPage()
+        Me.TabPage24 = New System.Windows.Forms.TabPage()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.设置ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.操作员管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.试验数据检索ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.设置ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnMin = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblChipLeg = New System.Windows.Forms.Label()
+        Me.lblSeatLeg = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cmbUnitNo = New System.Windows.Forms.ComboBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblVolt = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnBegin = New System.Windows.Forms.Button()
+        Me.btnMax = New System.Windows.Forms.Button()
         Me.OneSec = New System.Windows.Forms.Timer(Me.components)
         Me.OneMin = New System.Windows.Forms.Timer(Me.components)
+        Me.txtManufact = New System.Windows.Forms.TextBox()
+        Me.txtStandard = New System.Windows.Forms.TextBox()
+        Me.txtTestNo = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -109,7 +113,7 @@ Partial Class frmMain
         Me.TabControl1.Controls.Add(Me.TabPage22)
         Me.TabControl1.Controls.Add(Me.TabPage23)
         Me.TabControl1.Controls.Add(Me.TabPage24)
-        Me.TabControl1.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TabControl1.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TabControl1.ItemSize = New System.Drawing.Size(40, 18)
         Me.TabControl1.Location = New System.Drawing.Point(272, 74)
         Me.TabControl1.Multiline = True
@@ -387,7 +391,7 @@ Partial Class frmMain
         '
         'btnMin
         '
-        Me.btnMin.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnMin.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnMin.Location = New System.Drawing.Point(244, 324)
         Me.btnMin.Name = "btnMin"
         Me.btnMin.Size = New System.Drawing.Size(20, 70)
@@ -406,7 +410,11 @@ Partial Class frmMain
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.lblLeg)
+        Me.GroupBox1.Controls.Add(Me.txtTestNo)
+        Me.GroupBox1.Controls.Add(Me.txtStandard)
+        Me.GroupBox1.Controls.Add(Me.txtManufact)
+        Me.GroupBox1.Controls.Add(Me.lblChipLeg)
+        Me.GroupBox1.Controls.Add(Me.lblSeatLeg)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.cmbUnitNo)
@@ -422,7 +430,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.btnBegin)
-        Me.GroupBox1.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 74)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(221, 602)
@@ -430,13 +438,21 @@ Partial Class frmMain
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "参数设置"
         '
-        'lblLeg
+        'lblChipLeg
         '
-        Me.lblLeg.AutoSize = True
-        Me.lblLeg.Location = New System.Drawing.Point(116, 108)
-        Me.lblLeg.Name = "lblLeg"
-        Me.lblLeg.Size = New System.Drawing.Size(0, 14)
-        Me.lblLeg.TabIndex = 23
+        Me.lblChipLeg.AutoSize = True
+        Me.lblChipLeg.Location = New System.Drawing.Point(117, 167)
+        Me.lblChipLeg.Name = "lblChipLeg"
+        Me.lblChipLeg.Size = New System.Drawing.Size(0, 14)
+        Me.lblChipLeg.TabIndex = 24
+        '
+        'lblSeatLeg
+        '
+        Me.lblSeatLeg.AutoSize = True
+        Me.lblSeatLeg.Location = New System.Drawing.Point(116, 108)
+        Me.lblSeatLeg.Name = "lblSeatLeg"
+        Me.lblSeatLeg.Size = New System.Drawing.Size(0, 14)
+        Me.lblSeatLeg.TabIndex = 23
         '
         'Label10
         '
@@ -450,7 +466,7 @@ Partial Class frmMain
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(20, 55)
+        Me.Label8.Location = New System.Drawing.Point(20, 53)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(63, 14)
         Me.Label8.TabIndex = 21
@@ -460,7 +476,7 @@ Partial Class frmMain
         '
         Me.cmbUnitNo.FormattingEnabled = True
         Me.cmbUnitNo.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cmbUnitNo.Location = New System.Drawing.Point(98, 52)
+        Me.cmbUnitNo.Location = New System.Drawing.Point(98, 50)
         Me.cmbUnitNo.Name = "cmbUnitNo"
         Me.cmbUnitNo.Size = New System.Drawing.Size(72, 21)
         Me.cmbUnitNo.TabIndex = 20
@@ -476,7 +492,7 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(98, 277)
+        Me.Button1.Location = New System.Drawing.Point(98, 311)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(86, 55)
         Me.Button1.TabIndex = 19
@@ -486,7 +502,7 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(95, 30)
+        Me.Label2.Location = New System.Drawing.Point(95, 27)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(77, 14)
         Me.Label2.TabIndex = 18
@@ -526,7 +542,7 @@ Partial Class frmMain
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(63, 14)
         Me.Label4.TabIndex = 18
-        Me.Label4.Text = "产品类型"
+        Me.Label4.Text = "器件类型"
         '
         'lblVolt
         '
@@ -539,7 +555,7 @@ Partial Class frmMain
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(20, 81)
+        Me.Label9.Location = New System.Drawing.Point(20, 80)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(63, 14)
         Me.Label9.TabIndex = 18
@@ -557,7 +573,7 @@ Partial Class frmMain
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 30)
+        Me.Label1.Location = New System.Drawing.Point(20, 27)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 14)
         Me.Label1.TabIndex = 18
@@ -574,7 +590,7 @@ Partial Class frmMain
         '
         'btnMax
         '
-        Me.btnMax.Font = New System.Drawing.Font("SimSun", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnMax.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnMax.Location = New System.Drawing.Point(246, 421)
         Me.btnMax.Name = "btnMax"
         Me.btnMax.Size = New System.Drawing.Size(20, 70)
@@ -590,6 +606,27 @@ Partial Class frmMain
         'OneMin
         '
         Me.OneMin.Interval = 60000
+        '
+        'txtManufact
+        '
+        Me.txtManufact.Location = New System.Drawing.Point(98, 190)
+        Me.txtManufact.Name = "txtManufact"
+        Me.txtManufact.Size = New System.Drawing.Size(70, 23)
+        Me.txtManufact.TabIndex = 25
+        '
+        'txtStandard
+        '
+        Me.txtStandard.Location = New System.Drawing.Point(98, 218)
+        Me.txtStandard.Name = "txtStandard"
+        Me.txtStandard.Size = New System.Drawing.Size(70, 23)
+        Me.txtStandard.TabIndex = 26
+        '
+        'txtTestNo
+        '
+        Me.txtTestNo.Location = New System.Drawing.Point(98, 247)
+        Me.txtTestNo.Name = "txtTestNo"
+        Me.txtTestNo.Size = New System.Drawing.Size(70, 23)
+        Me.txtTestNo.TabIndex = 27
         '
         'frmMain
         '
@@ -669,8 +706,12 @@ Partial Class frmMain
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents cmbUnitNo As System.Windows.Forms.ComboBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents lblLeg As System.Windows.Forms.Label
+    Friend WithEvents lblSeatLeg As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents lblVolt As System.Windows.Forms.Label
+    Friend WithEvents lblChipLeg As System.Windows.Forms.Label
+    Friend WithEvents txtStandard As System.Windows.Forms.TextBox
+    Friend WithEvents txtManufact As System.Windows.Forms.TextBox
+    Friend WithEvents txtTestNo As System.Windows.Forms.TextBox
 
 End Class

@@ -78,4 +78,11 @@ Public Class DBMethord
                             & power & "')"
         dbcmd.ExecuteNonQuery()
     End Sub
+
+    Public Shared Sub UpdateHour(ByVal i As Byte, ByVal hour As Byte)
+        Dim dbcmd As New OleDbCommand
+        dbcmd.Connection = _DBconn
+        dbcmd.CommandText = "update 单元状态 set 最近上传时间 = " & hour & " where 老化单元号 = " & i
+        dbcmd.ExecuteNonQuery()
+    End Sub
 End Class
