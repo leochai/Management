@@ -22,15 +22,15 @@ Partial Class frmPosChart1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnAuto = New System.Windows.Forms.Button
-        Me.btnReset = New System.Windows.Forms.Button
-        Me.btnOK = New System.Windows.Forms.Button
-        Me.btnExit = New System.Windows.Forms.Button
+        Me.btnAuto = New System.Windows.Forms.Button()
+        Me.btnReset = New System.Windows.Forms.Button()
+        Me.btnOK = New System.Windows.Forms.Button()
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnAuto
         '
-        Me.btnAuto.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnAuto.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnAuto.Location = New System.Drawing.Point(760, 614)
         Me.btnAuto.Name = "btnAuto"
         Me.btnAuto.Size = New System.Drawing.Size(84, 27)
@@ -40,7 +40,7 @@ Partial Class frmPosChart1
         '
         'btnReset
         '
-        Me.btnReset.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnReset.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnReset.Location = New System.Drawing.Point(860, 614)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(84, 27)
@@ -50,7 +50,7 @@ Partial Class frmPosChart1
         '
         'btnOK
         '
-        Me.btnOK.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnOK.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnOK.Location = New System.Drawing.Point(1029, 614)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(84, 27)
@@ -60,7 +60,7 @@ Partial Class frmPosChart1
         '
         'btnExit
         '
-        Me.btnExit.Font = New System.Drawing.Font("SimSun", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnExit.Font = New System.Drawing.Font("宋体", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnExit.Location = New System.Drawing.Point(1130, 614)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(84, 27)

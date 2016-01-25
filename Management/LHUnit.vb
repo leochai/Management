@@ -10,11 +10,11 @@
     Public 开机日期 As Date
     Public 操作员 As String
     Public 对位表(95) As Byte
-    Public 座子类型 As Boolean  '0-四位，1-单位
+    Public 座子类型 As Boolean  '0-单位，1-四位
     Public 单元电压 As Byte
     Public 器件类型 As Byte     '0-单位，1-双位，2-四位
     Public address As Byte
-    Public isTesting As Boolean
+    Public Testing As Byte      '单元状态：00-正常，03-请求参数，0C-340暂停，30-1000停止
     Public lastHour As Byte
 
     Property 电压规格()

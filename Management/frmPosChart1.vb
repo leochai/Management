@@ -2,6 +2,8 @@
 
 Public Class frmPosChart1
     Dim cell(47) As OneCell
+    Public unitNo As Byte
+    Public pos(95) As Byte
 
     Private Sub frmPosChart1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         For j = 0 To 3
@@ -14,7 +16,9 @@ Public Class frmPosChart1
             Next
         Next
 
-
+        For i = 0 To 95
+            pos(i) = 0
+        Next
     End Sub
 
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
@@ -43,5 +47,19 @@ Public Class frmPosChart1
                 a += 1
             End If
         Next
+    End Sub
+
+    Private Sub btnOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOK.Click
+        For i = 0 To 47
+            If cell(i).isUsed Then
+                pos(i * 2) = cell(i).CellNum
+            End If
+        Next
+        _unit(unitNo).对位表 = pos
+        Me.Close()
+    End Sub
+
+    Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
+        Me.Close()
     End Sub
 End Class

@@ -25,7 +25,7 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtSend = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
@@ -57,12 +57,18 @@ Partial Class frmMain
         Me.btnMin = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnPos = New System.Windows.Forms.Button()
+        Me.txtOperator = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtTestNo = New System.Windows.Forms.TextBox()
+        Me.txtStandard = New System.Windows.Forms.TextBox()
+        Me.txtManufact = New System.Windows.Forms.TextBox()
         Me.lblChipLeg = New System.Windows.Forms.Label()
         Me.lblSeatLeg = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbUnitNo = New System.Windows.Forms.ComboBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cmbType = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -77,9 +83,7 @@ Partial Class frmMain
         Me.btnMax = New System.Windows.Forms.Button()
         Me.OneSec = New System.Windows.Forms.Timer(Me.components)
         Me.OneMin = New System.Windows.Forms.Timer(Me.components)
-        Me.txtManufact = New System.Windows.Forms.TextBox()
-        Me.txtStandard = New System.Windows.Forms.TextBox()
-        Me.txtTestNo = New System.Windows.Forms.TextBox()
+        Me.txtRecv = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -126,7 +130,8 @@ Partial Class frmMain
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.Transparent
-        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.txtRecv)
+        Me.TabPage1.Controls.Add(Me.txtSend)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -135,15 +140,15 @@ Partial Class frmMain
         Me.TabPage1.Text = "1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtSend
         '
-        Me.TextBox1.Location = New System.Drawing.Point(33, 20)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(188, 349)
-        Me.TextBox1.TabIndex = 16
+        Me.txtSend.Location = New System.Drawing.Point(33, 20)
+        Me.txtSend.Multiline = True
+        Me.txtSend.Name = "txtSend"
+        Me.txtSend.ReadOnly = True
+        Me.txtSend.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtSend.Size = New System.Drawing.Size(188, 349)
+        Me.txtSend.TabIndex = 16
         '
         'TabPage2
         '
@@ -410,6 +415,9 @@ Partial Class frmMain
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnPos)
+        Me.GroupBox1.Controls.Add(Me.txtOperator)
+        Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.txtTestNo)
         Me.GroupBox1.Controls.Add(Me.txtStandard)
         Me.GroupBox1.Controls.Add(Me.txtManufact)
@@ -418,7 +426,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.cmbUnitNo)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.cmbType)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label7)
@@ -438,61 +446,119 @@ Partial Class frmMain
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "参数设置"
         '
+        'btnPos
+        '
+        Me.btnPos.Location = New System.Drawing.Point(23, 410)
+        Me.btnPos.Name = "btnPos"
+        Me.btnPos.Size = New System.Drawing.Size(163, 23)
+        Me.btnPos.TabIndex = 30
+        Me.btnPos.Text = "输入对位表"
+        Me.btnPos.UseVisualStyleBackColor = True
+        '
+        'txtOperator
+        '
+        Me.txtOperator.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.txtOperator.Location = New System.Drawing.Point(98, 377)
+        Me.txtOperator.Name = "txtOperator"
+        Me.txtOperator.ReadOnly = True
+        Me.txtOperator.Size = New System.Drawing.Size(88, 25)
+        Me.txtOperator.TabIndex = 29
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label11.Location = New System.Drawing.Point(20, 381)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(52, 15)
+        Me.Label11.TabIndex = 28
+        Me.Label11.Text = "操作员"
+        '
+        'txtTestNo
+        '
+        Me.txtTestNo.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.txtTestNo.Location = New System.Drawing.Point(98, 339)
+        Me.txtTestNo.Name = "txtTestNo"
+        Me.txtTestNo.Size = New System.Drawing.Size(88, 25)
+        Me.txtTestNo.TabIndex = 27
+        '
+        'txtStandard
+        '
+        Me.txtStandard.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.txtStandard.Location = New System.Drawing.Point(98, 302)
+        Me.txtStandard.Name = "txtStandard"
+        Me.txtStandard.Size = New System.Drawing.Size(88, 25)
+        Me.txtStandard.TabIndex = 26
+        '
+        'txtManufact
+        '
+        Me.txtManufact.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.txtManufact.Location = New System.Drawing.Point(98, 266)
+        Me.txtManufact.Name = "txtManufact"
+        Me.txtManufact.Size = New System.Drawing.Size(88, 25)
+        Me.txtManufact.TabIndex = 25
+        '
         'lblChipLeg
         '
         Me.lblChipLeg.AutoSize = True
-        Me.lblChipLeg.Location = New System.Drawing.Point(117, 167)
+        Me.lblChipLeg.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.lblChipLeg.Location = New System.Drawing.Point(117, 235)
         Me.lblChipLeg.Name = "lblChipLeg"
-        Me.lblChipLeg.Size = New System.Drawing.Size(0, 14)
+        Me.lblChipLeg.Size = New System.Drawing.Size(0, 15)
         Me.lblChipLeg.TabIndex = 24
         '
         'lblSeatLeg
         '
         Me.lblSeatLeg.AutoSize = True
-        Me.lblSeatLeg.Location = New System.Drawing.Point(116, 108)
+        Me.lblSeatLeg.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.lblSeatLeg.Location = New System.Drawing.Point(116, 160)
         Me.lblSeatLeg.Name = "lblSeatLeg"
-        Me.lblSeatLeg.Size = New System.Drawing.Size(0, 14)
+        Me.lblSeatLeg.Size = New System.Drawing.Size(0, 15)
         Me.lblSeatLeg.TabIndex = 23
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(20, 108)
+        Me.Label10.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label10.Location = New System.Drawing.Point(20, 160)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 14)
+        Me.Label10.Size = New System.Drawing.Size(67, 15)
         Me.Label10.TabIndex = 22
         Me.Label10.Text = "座子类型"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(20, 53)
+        Me.Label8.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label8.Location = New System.Drawing.Point(20, 89)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(63, 14)
+        Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 21
         Me.Label8.Text = "单元编号"
         '
         'cmbUnitNo
         '
+        Me.cmbUnitNo.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.cmbUnitNo.FormattingEnabled = True
         Me.cmbUnitNo.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"})
-        Me.cmbUnitNo.Location = New System.Drawing.Point(98, 50)
+        Me.cmbUnitNo.Location = New System.Drawing.Point(98, 86)
         Me.cmbUnitNo.Name = "cmbUnitNo"
-        Me.cmbUnitNo.Size = New System.Drawing.Size(72, 21)
+        Me.cmbUnitNo.Size = New System.Drawing.Size(88, 23)
         Me.cmbUnitNo.TabIndex = 20
         '
-        'ComboBox1
+        'cmbType
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"4GH302", "GH302", "4GO213", "GHB302", "GO11", "GH137"})
-        Me.ComboBox1.Location = New System.Drawing.Point(99, 134)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(72, 21)
-        Me.ComboBox1.TabIndex = 20
+        Me.cmbType.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.cmbType.FormattingEnabled = True
+        Me.cmbType.Items.AddRange(New Object() {"4GH302", "GH302", "4GO213", "GHB302", "GO11", "GH137"})
+        Me.cmbType.Location = New System.Drawing.Point(99, 194)
+        Me.cmbType.Name = "cmbType"
+        Me.cmbType.Size = New System.Drawing.Size(87, 23)
+        Me.cmbType.TabIndex = 20
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(98, 311)
+        Me.Button1.Location = New System.Drawing.Point(6, 542)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(86, 55)
         Me.Button1.TabIndex = 19
@@ -502,80 +568,89 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(95, 27)
+        Me.Label2.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label2.Location = New System.Drawing.Point(95, 55)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(77, 14)
+        Me.Label2.Size = New System.Drawing.Size(82, 15)
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "光电耦合器"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(20, 251)
+        Me.Label7.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label7.Location = New System.Drawing.Point(20, 344)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(63, 14)
+        Me.Label7.Size = New System.Drawing.Size(67, 15)
         Me.Label7.TabIndex = 18
         Me.Label7.Text = "例试编号"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(20, 223)
+        Me.Label6.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label6.Location = New System.Drawing.Point(20, 307)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(49, 14)
+        Me.Label6.Size = New System.Drawing.Size(52, 15)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "标准号"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(20, 194)
+        Me.Label5.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label5.Location = New System.Drawing.Point(20, 270)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(63, 14)
+        Me.Label5.Size = New System.Drawing.Size(67, 15)
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "生产批号"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(20, 165)
+        Me.Label4.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label4.Location = New System.Drawing.Point(20, 233)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 14)
+        Me.Label4.Size = New System.Drawing.Size(67, 15)
         Me.Label4.TabIndex = 18
         Me.Label4.Text = "器件类型"
         '
         'lblVolt
         '
         Me.lblVolt.AutoSize = True
-        Me.lblVolt.Location = New System.Drawing.Point(116, 81)
+        Me.lblVolt.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.lblVolt.Location = New System.Drawing.Point(116, 125)
         Me.lblVolt.Name = "lblVolt"
-        Me.lblVolt.Size = New System.Drawing.Size(0, 14)
+        Me.lblVolt.Size = New System.Drawing.Size(0, 15)
         Me.lblVolt.TabIndex = 18
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(20, 80)
+        Me.Label9.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label9.Location = New System.Drawing.Point(20, 124)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(63, 14)
+        Me.Label9.Size = New System.Drawing.Size(67, 15)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = "电压规格"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 137)
+        Me.Label3.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label3.Location = New System.Drawing.Point(20, 197)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(63, 14)
+        Me.Label3.Size = New System.Drawing.Size(67, 15)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "产品型号"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 27)
+        Me.Label1.Font = New System.Drawing.Font("宋体", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.Location = New System.Drawing.Point(20, 55)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 14)
+        Me.Label1.Size = New System.Drawing.Size(67, 15)
         Me.Label1.TabIndex = 18
         Me.Label1.Text = "产品名称"
         '
@@ -607,26 +682,15 @@ Partial Class frmMain
         '
         Me.OneMin.Interval = 60000
         '
-        'txtManufact
+        'txtRecv
         '
-        Me.txtManufact.Location = New System.Drawing.Point(98, 190)
-        Me.txtManufact.Name = "txtManufact"
-        Me.txtManufact.Size = New System.Drawing.Size(70, 23)
-        Me.txtManufact.TabIndex = 25
-        '
-        'txtStandard
-        '
-        Me.txtStandard.Location = New System.Drawing.Point(98, 218)
-        Me.txtStandard.Name = "txtStandard"
-        Me.txtStandard.Size = New System.Drawing.Size(70, 23)
-        Me.txtStandard.TabIndex = 26
-        '
-        'txtTestNo
-        '
-        Me.txtTestNo.Location = New System.Drawing.Point(98, 247)
-        Me.txtTestNo.Name = "txtTestNo"
-        Me.txtTestNo.Size = New System.Drawing.Size(70, 23)
-        Me.txtTestNo.TabIndex = 27
+        Me.txtRecv.Location = New System.Drawing.Point(227, 20)
+        Me.txtRecv.Multiline = True
+        Me.txtRecv.Name = "txtRecv"
+        Me.txtRecv.ReadOnly = True
+        Me.txtRecv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtRecv.Size = New System.Drawing.Size(188, 349)
+        Me.txtRecv.TabIndex = 17
         '
         'frmMain
         '
@@ -689,7 +753,7 @@ Partial Class frmMain
     Friend WithEvents btnMin As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSend As System.Windows.Forms.TextBox
     Friend WithEvents btnMax As System.Windows.Forms.Button
     Friend WithEvents OneSec As System.Windows.Forms.Timer
     Friend WithEvents OneMin As System.Windows.Forms.Timer
@@ -698,7 +762,7 @@ Partial Class frmMain
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbType As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -713,5 +777,9 @@ Partial Class frmMain
     Friend WithEvents txtStandard As System.Windows.Forms.TextBox
     Friend WithEvents txtManufact As System.Windows.Forms.TextBox
     Friend WithEvents txtTestNo As System.Windows.Forms.TextBox
+    Friend WithEvents txtOperator As System.Windows.Forms.TextBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents btnPos As System.Windows.Forms.Button
+    Friend WithEvents txtRecv As System.Windows.Forms.TextBox
 
 End Class

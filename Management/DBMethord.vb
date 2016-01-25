@@ -13,7 +13,7 @@ Public Class DBMethord
                         .器件类型 = reader("器件类型")
                     End If
                     If Not reader("运行状态") Is DBNull.Value Then
-                        .isTesting = reader("运行状态")
+                        .Testing = reader("运行状态")
                     End If
                     If Not reader("单元地址") Is DBNull.Value Then
                         .address = reader("单元地址")
